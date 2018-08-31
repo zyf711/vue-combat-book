@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue2-05</title>
+</head>
+<body>
+	<div id="app">
+		{{ number / 10 }}
+		{{ isOK ? '确定' : '取消' }}
+		{{ text.split(',').reverse().join(',') }}
+	<!-- 
+		Vue.js只支持单个表达式，不支持语句和流控制
+		这是语句，不是表达式：
+		{{var book = 'vue'}}
+		这是流控制，要用三元运算:
+		{{ if(ok){ return msg} }} 
+	-->
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+	<script>
+		var app = new Vue({
+			el:'#app',
+			data:{
+				number:100,
+				isOK:false,
+				text:'123,456'
+			}
+		})
+	</script>
+</body>
+</html>

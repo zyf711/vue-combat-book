@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue5-12</title>
+</head>
+<body>
+	<div id="app">
+		点击次数：{{ counter }}
+		<div @click="counter++">点击增加1</div> <!-- @click的表达式可以使用js语句 -->
+		<div @click="add">点击增加1</div> <!-- @click的表达式也可以是一个在vue实例中methods内的函数名。 @click调用的方法名后，如果不需要参数的话可以不跟括号 -->
+		<div @click="handleAdd(10)">点击增加10</div> 
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+	<script>
+		new Vue({
+			el:'#app',
+			data:{
+				counter:0
+			},
+			methods:{
+				handleAdd:function(count){
+					count = count || 1;
+					this.counter += count;
+				},
+				add:function(){
+					this.counter++
+				}
+				// handleAdd(count){
+				// 	count = count || 1;
+				// 	this.counter += count;
+				// }
+			}
+		})
+	</script>
+</body>
+</html>

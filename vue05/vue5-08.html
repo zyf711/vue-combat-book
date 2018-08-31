@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue5-08</title>
+</head>
+<body>
+	<div id="app">
+		<span v-for="value in user">{{value}}</span>
+		<ul>
+			<li v-for="(value,key,index) in user">{{ index }} - {{ key }} : {{ value }}</li>
+			<!-- v-for遍历对象有两个可选参数，键名和索引 -->
+		</ul>
+		<span v-for="n in 10">{{n}}</span>
+		<!-- v-for可以迭代整数 -->
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+	<script>
+		var app = new Vue({
+			el:'#app',
+			data:{
+				user:{
+					name:'aresn',
+				    gender:'男',
+				    age:26
+				}
+			}
+		})
+	</script>
+</body>
+</html>

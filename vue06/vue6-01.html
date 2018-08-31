@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue6-01</title>
+</head>
+<body>
+	<div id="app">
+		<input type="text" v-model="message" placeholder="输入内容">
+		<!-- 中文输入法输入，拼音阶段更新数据方法如下： -->
+		<!-- <input v-on:input="message = $event.target.value" /> -->
+		<p>输入的内容是: {{ message }}</p>
+		<textarea name="" id="" cols="30" rows="10" v-model="text" placeholder="输入内容"></textarea>
+		<!-- 使用v-model后，表单空控件显示的值只依赖所绑定的数据。不在关心初始化的value -->
+		<p>输入的内容是：{{ text }}</p>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+	<script>
+		var app = new Vue({
+			el:'#app',
+			data:{
+				message:'',
+				text:''
+			}
+		})
+	</script>
+</body>
+</html>

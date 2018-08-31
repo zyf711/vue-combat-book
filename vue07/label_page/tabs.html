@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>标签页组件</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<!-- 技术点： -->
+	<!-- *使用组件嵌套的方式，将一系列pane组件作为tabs组件的slot -->
+	<!-- tabs组件pane组件通信上用$parent和$children的方法访问父链和子链 -->
+	<!-- 定义了prop: value和data: currentValue, 使用$emit('input')来实现v-model的用法 -->
+	
+	<div id="app" v-cloak>
+		<tabs v-model="activeKey">
+			<pane label="标签一" name="a">
+				<p>标签一的内容</p>
+				<p>标签一的内容</p>
+				<p>标签一的内容</p>
+			</pane>
+			<pane label="标签二" name="b">标签二的内容</pane>
+			<pane label="标签三" name="c">标签三的内容</pane>
+		</tabs>
+		<tabs v-model="activeKey1">
+			<pane label="标签一" name="1">标签1的内容</pane>
+			<pane label="标签二" name="2">标签2的内容</pane>
+			<pane label="标签三" name="3">标签3的内容</pane>
+		</tabs>
+	</div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+	<script src="pane.js"></script>
+	<script src="tabs.js"></script>
+	<script>
+		var app = new Vue({
+			el:'#app',
+			data:{
+				activeKey:"b",
+				activeKey1:""
+			}
+		})
+	</script>
+</body>
+</html>

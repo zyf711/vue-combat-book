@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue7-16</title>
+</head>
+<body>
+	<!-- 在子组件中，使用this.$parent可直接访问该组件的父实例或组件。父组件也可以通过this.$children访问它的所有子组件。但不提倡这样做。 -->
+	<!-- 父子组件最好还是通过props和$emit来通信。 -->
+	<div id="app">
+		{{ message }}
+		<component-a></component-a>
+	</div>
+
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+	<script>
+
+		Vue.component('component-a',{
+			template:'<button @click="handleEvent">通过父链直接修改数据</button>',
+			methods:{
+				handleEvent:function(){
+					// 访问到父链可以做任何操作，比如直接修改数据
+					this.$parent.message = '来自组件component-a的内容'
+				}
+			}
+		})
+
+		var app = new Vue({
+			el:'#app',
+			data:{
+				message:''
+			}
+		})
+	</script>
+</body>
+</html>

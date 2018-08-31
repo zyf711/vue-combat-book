@@ -1,0 +1,17 @@
+[v-cloak]{display: none;}
+table{
+	border: 1px solid #e9e9e9;
+	border-spacing: 0;
+	empty-cells: show;
+}
+th,td{
+	padding: 8px 16px;
+	text-align: left;
+	border: 1px solid #e9e9e9;
+}
+th{
+	background: #f7f7f7;
+	color:#5c6b77;
+	font-weight: 600;
+	white-space: nowrap;
+}

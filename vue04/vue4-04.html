@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue4-04</title>
+</head>
+<body>
+	<div id="app">
+		<div :class="[activeCls,errorCls]"></div>
+		<!-- 当要应用多class时，可以用数组语法 -->
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+	<script>
+		var app = new Vue({
+			el:'#app',
+			data:{
+				activeCls:'active',
+				errorCls:'error'
+			}
+		})
+	</script>
+</body>
+</html>

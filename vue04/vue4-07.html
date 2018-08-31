@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue4-07</title>
+</head>
+<body>
+	<div id="app">
+		<button :class="classes"></button>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+	<script>
+		var app = new Vue({
+			el:'#app',
+			data:{
+				size:'large',
+				disabled:true
+			},
+			computed:{
+				classes:function(){
+					return [
+						'btn',
+						{
+							[ 'btn-' + this.size ] : this.size !== '', //this.size不为空，执行:前边的
+							[ 'btn-disabled' ] : this.disabled
+						}
+					];
+				}
+			}
+		})
+	</script>
+</body>
+</html>

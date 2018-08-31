@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue5-11</title>
+</head>
+<body>
+	<!-- 当不想改变原数组，想通过一个数组的副本来做过滤或排序的显示时，可以用计算属性来返回过滤或排序后的数组 -->
+	<div id="app">
+		<ul>
+			<template v-for=" book in filterBooks ">
+				<li>书名：{{ book.name }}</li>
+				<li>作者：{{ book.author }}</li>
+			</template>
+		</ul>
+		<ul>
+			<template v-for=" book in sortedBooks ">
+				<li>书名：{{ book.name }}</li>
+				<li>作者：{{ book.author }}</li>
+			</template>
+		</ul>
+	</div>
+
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+	<script>
+		var app = new Vue({
+			el:'#app',
+			data:{
+				books:[
+					{
+						name:'第1本书',
+						author:'第1作者'
+					},{
+						name:'第2本书javascript高级程序设计',
+						author:'第2作者'
+					},{
+						name:'第3本书javascript',
+						author:'第3作者'
+					}
+				]
+			},
+			computed:{
+				//计算属性依赖books，但不会修改books
+				filterBooks:function(){ 
+					return this.books.filter(function(book){
+						return book.name.match(/javascript/)
+					})
+				},
+				sortedBooks:function(){
+					return this.books.sort(function(a,b){
+						return a.name.length < b.name.length
+					})
+				}
+			}
+		})
+	</script>
+</body>
+</html>

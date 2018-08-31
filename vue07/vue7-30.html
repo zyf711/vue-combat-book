@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue7-30</title>
+</head>
+<body>
+	<!-- 手动挂载实例 -->
+	<div id="mount-div"></div>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+	<script>
+		var MyComponent = Vue.extend({ //Vue.extend是基础构造器，参数是一个包含组件选项的对象
+			template:'<div>hello:{{ name }}</div>',
+			// 没el:'' 表示没挂载
+			data:function(){
+				return { name : 'Aresn'}
+			}
+		})
+
+		new MyComponent().$mount('#mount-div')  //用$mount()手动挂载一个未挂载的实例
+		// 还可以这么写：
+		// new MyComponent({
+		// 	el:'#mount-div'
+		// })
+
+		// 或者在文档之外渲染并且随后挂载
+		// var com = new MyComponent().$mount();
+		// document.getElementById('mount-div').appendChild(com.$el)
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue2-09</title>
+</head>
+<body>
+	<div id="app">
+		<p v-if="show">这是一段文本</p>
+		<button v-on:click="handleClose">点击隐藏</button>
+		<!-- v-on:绑定事件监听器。可简写成@  表达式可以是一个方法名，都写在实例的methods属性内-->
+		<!-- 表达式除了方法名也可以是内联语句 -->
+		<!-- <button v-on:click="show = false">点击隐藏</button> -->
+	</div>
+
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+	<script>
+		var app = new Vue({
+			el:'#app',
+			data:{
+				show:true
+			},
+			methods:{ 
+				handleClose:function(){
+					this.show = false;
+				}
+			}
+		})
+	</script>
+</body>
+</html>

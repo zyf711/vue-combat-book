@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue9-11</title>
+</head>
+<body>
+	<div id="app">
+		<ele></ele>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+	<script>
+		Vue.component('ele',{
+			render:function(createElement){
+				var _this = this;
+				// 渲染聊天内容列表
+				if( this.list.length ){
+					return createElement('ul',this.list.map(function(item){
+						return createElement('li',item)
+					}))
+				}else{
+					var listNode = createElement('p','暂时无聊天内容')
+				}
+				return createElement('div',[
+						listNode,
+						createElement('input',{
+							attrs:{ placeholder:'输入内容，按回车键发送' }, //attrs 正常的html特性
+							style:{ width:'200px' },
+							on:{ keyup:function(event){
+								// 如果不是回车键，不发送数据
+								if( event.keyCode !== 13 ) return;
+								// 添加输入内容到聊天列表
+								_this.list.push( event.target.value );
+								// 发送后清空输入框
+								event.target.value = ''
+							} }
+						})
+					])
+			},
+			data:function(){
+				return { 
+					value:'',
+					list:[] 
+				}
+			}
+		})
+		var app = new Vue({
+			el:'#app'
+		})
+	</script>
+</body>
+</html>

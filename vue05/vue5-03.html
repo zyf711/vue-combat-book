@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue5-03</title>
+</head>
+<body>
+	<div id="app">
+		<!-- v-else-if要紧跟v-if,v-else要紧跟v-if或v-else-if -->
+		<p v-if="status === 1">当status全等于1显示该行</p>
+		<p v-else-if="status === 2">当status全等于2显示该行</p>
+		<p v-else>否则显示该行</p>
+
+		<!-- 如果一次判断多个元素，可用内置的template元素上使用指令，最终渲染结果不会包含该元素。 -->
+		<template v-if="state === 1">
+			<p>这是一段文本</p>
+			<p>这是一段文本</p>
+			<p>这是一段文本</p>
+		</template>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+	<script>
+		var app = new Vue({
+			el:'#app',
+			data:{
+				status:1,
+				state:1
+			}
+		})
+	</script>
+</body>
+</html>

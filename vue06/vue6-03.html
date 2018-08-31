@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue6-03</title>
+</head>
+<body>
+	<div id="app">
+		<!-- 单独一个单选不需要v-model，直接v-bind绑定一个布尔类型的值 -->
+		<input type="radio" name="" id="" :checked="picked">
+		<label for="">单选按钮</label>
+		
+		<!-- 单独一个复选框也需要v-model -->
+		<input type="checkbox" name="" id="checked" v-model="checked">
+		<label for="checked">选择状态：{{ checked }}</label>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+	<script>
+		var app = new Vue({
+			el:'#app',
+			data:{
+				picked:true,
+				checked:false
+			}
+		})
+	</script>
+</body>
+</html>

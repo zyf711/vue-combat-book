@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue5-02</title>
+</head>
+<body>
+	<div id="app">
+		<!-- v-once不需要表达式的指令，作用是定义他的只渲染一次 包括子节点-->
+		<span v-once> {{message}}</span>
+		<div v-once>
+			<span>{{message}}</span>
+		</div>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+	<script>
+		var app = new Vue({
+			el:'#app',
+			data:{
+				message:'这是一段文本'
+			}	
+		})
+	</script>
+</body>
+</html>

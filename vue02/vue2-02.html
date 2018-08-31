@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue2-02</title>
+</head>
+<body>
+	<div id="app"></div>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+	<script>
+		var app = new Vue({
+			el:document.getElementById('app'), //el用于指定一个页面中已存在的DOM元素来挂载Vue实例，可以是HTMLElement，也可以是css选择器
+			data:{
+				a:2
+			},
+			created:function(){ //实例创建完成后调用,此阶段完成了数据的观测，但未挂载，$el不可用。初始化处理一些数据时比较有用
+				console.log(this.a); //this指向调用它的Vue实例
+			},
+			mounted:function(){ //el挂载到实例上后调用
+				console.log(this.$el);
+			}
+		})
+	</script>
+</body>
+</html>

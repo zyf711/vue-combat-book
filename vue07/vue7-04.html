@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue7-04</title>
+</head>
+<body>
+	<div id="app">
+		<my-component></my-component>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+	<script>
+		Vue.component('my-component',{
+			template:'<div>{{ message }}</div>',
+			data:function(){  //组件里使用data选项时，data必须是函数，然后将数据return出去
+				return {
+					message:'组件内容'
+				}
+			}
+		})
+
+		var app = new Vue({
+			el:'#app'
+		})
+	</script>
+</body>
+</html>

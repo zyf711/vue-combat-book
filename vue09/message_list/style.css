@@ -1,0 +1,75 @@
+*{margin: 0;padding: 0}
+[v-cloak]{
+	display: none;
+}
+.message{
+	width: 450px;
+	text-align: right;
+}
+.message div{
+	margin-bottom: 12px;
+}
+.message span{
+	display: inline-block;
+	width:100px;
+	vertical-align: top;
+}
+.message input,.message textarea{
+	width: 300px;
+	height: 32px;
+	padding: 0 6px;
+	color:#657180;
+	border:1px solid #d7dde4;
+	border-radius: 4px;
+	cursor:text;
+	outline: none;
+}
+.message input:focus, .message textarea:focus{
+	border: 1px solid #3399ff;
+}
+.message textarea{
+	height: 60px;
+	padding: 4px 6px;
+}
+.message button{
+	display: inline-block;
+	padding: 6px 15px;
+	border: 1px solid #39f;
+	border-radius:4px;
+	color:#fff;
+	background-color: #39f;
+	cursor: pointer;
+	outline:none;
+}
+.list{
+	margin-top: 50px;
+}
+.list-item{
+	padding: 10px;
+	border-bottom: 1px solid #e3e8ee;
+	overflow: hidden;
+}
+.list-item span{
+	display: block;
+	width: 70px;
+	float:left;
+	color: #39f;
+}
+.list-msg{
+	display:block;
+	margin-left: 60px;
+	text-align: justify;
+}
+.list-msg a{
+	color: #9ea7b4;
+	cursor: pointer;
+	float:right;
+}
+.list-msg a:hover{
+	color:#39f;
+}
+.list-nothing{
+	text-align: center;
+	color:#9ea7b4;
+	padding: 20px;
+}

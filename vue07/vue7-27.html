@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue7-27</title>
+</head>
+<body>
+	<div id="app">
+		<child-component></child-component>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+	<script>
+		//将组件定义为一个工厂函数，动态解析组件。vuejs只在组件需要渲染时触发工厂函数并把结果缓存起来。
+		//工厂函数接收一个resolve回调，在收到从服务器下载的组件定义时调用。也可以调用reject(reason)指示加载失败。
+		Vue.component('child-component',function(resolve,reject){ 
+			window.setTimeout(function(){ //这里setTimeout指示演示异步，具体的下载逻辑自己定。比如把组件配置写成一个对象配置，通过ajax来请求，然后调用resolve传入配置
+				resolve({
+					template:'<div>我是异步渲染的</div>'
+				})
+			},6000)
+		})
+
+		var app = new Vue({
+			el:'#app',
+		})
+	</script>
+</body>
+</html>

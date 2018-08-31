@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue9-02</title>
+</head>
+<body>
+	<div id="app">
+		<anchor :level="3" title="特性">特性</anchor>
+	</div>
+
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+	<script>
+		Vue.component('anchor',{
+			props:{
+				level:{
+					type:Number,
+					required:true
+				},
+				title:{
+					type:String,
+					default:''
+				}
+			},
+			render:function(createElement){ //通过createElement参数创建Virtual Dom
+				return createElement(
+						'h' + this.level,
+						[
+							createElement(
+									'a',
+									{
+										domProps:{
+											href:'#'+this.title
+										}
+									},
+									this.$slots.default
+								)
+						]
+					)
+			}
+		})
+
+		var app = new Vue({
+			el:'#app'
+		})
+	</script>
+</body>
+</html>

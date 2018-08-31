@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue5-05</title>
+</head>
+<body>
+	<div id="app">
+		<p v-show="status === 1">当status为1时显示该行</p> 
+		<!-- v-show改变元素css的display属性。v-show只是css属性切换，无论条件真与否都会被编译 template上不能用v-show -->
+		<!-- v-if更适合不经常改变的场景。v-show适合频繁切换条件。  -->
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+	<script>
+		var app = new Vue({
+			el:'#app',
+			data:{
+				status:1
+			}
+		})
+	</script>
+</body>
+</html>

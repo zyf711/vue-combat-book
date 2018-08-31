@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue7-22</title>
+</head>
+<body>
+	<!-- 访问slot -->
+	<!-- vue1.x想获取某个slot比较麻烦，需要用v-el间接获取，vue2.x提供用来访问被slot分发的内容的方法$slots -->
+
+	<div id="app">
+		<child-component>
+			<h2 slot="header">标题</h2>
+			<p>内容正文</p>
+			<p>更多内容正文</p>
+			<div slot="footer">底部信息</div>
+		</child-component>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+	<script>
+		Vue.component('child-component',{
+			template:'\
+			<div class="container">\
+			<div class="header"><slot name="header"></slot></div>\
+			<div class="main"><slot></slot></div>\
+			<div class="footer"><slot name="footer"></slot></div>\
+			</div>',
+			mounted:function(){
+				var header = this.$slots.header;
+				var main = this.$slots.default;
+				var footer = this.$slots.footer;
+				console.log(header);
+				console.log(footer[0].elm.innerHTML)
+			}
+		});
+
+		var app = new Vue({
+			el:'#app'
+		})
+	</script>
+</body>
+</html>

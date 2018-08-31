@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue7-06</title>
+</head>
+<body>
+	<!-- 父组件向子组件通信，用props -->
+
+	<!-- props中声明的数据与组件data函数return的数据主要区别就是:
+		props的来自父级！而data中的是组件自己的数据，作用域是组件本身。 -->
+
+	<div id="app">
+		<!-- 在组件的自定义标签上直接写该props的名称 -->
+		<my-component message="来自父组件的数据"></my-component>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+	<script>
+		Vue.component('my-component',{
+			props:['message'], //用props声明需要从父级接收的数据。props的值一种是字符串数组，一种是对象
+			template:'<div>{{ message }}</div>'
+		})
+
+		var app = new Vue({
+			el:'#app'
+		})
+	</script>
+</body>
+</html>

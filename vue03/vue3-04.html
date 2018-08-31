@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue3-04</title>
+</head>
+<body>
+	<div id="app1"></div>
+	<div id="app2">{{ reversedText }}</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+	<script>
+		var app1 = new Vue({
+			el:'#app1',
+			data:{
+				text:'123,456'
+			}
+		})
+		var app2 = new Vue({
+			el:'#app2',
+			computed:{
+				reversedText:function(){
+					return app1.text.split(',').reverse().join(',')
+					// 计算属性可以依赖其他计算属性，也可依赖其他实例的数据
+				}
+			}
+		})
+	</script>
+</body>
+</html>

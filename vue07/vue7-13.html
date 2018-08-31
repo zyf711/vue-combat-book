@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue7-13</title>
+</head>
+<body>
+    <!-- vue2.0可以再自定义组件上使用v-model指令 -->
+    <div id="app">
+        <p>总数:{{ total }}</p>
+        <my-component v-model="total"></my-component>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script>
+        Vue.component('my-component',{
+            template:'<div><button @click="handleIncrease">+1</button></div>',
+            data:function(){
+                return { counter:0 }
+            },
+            methods:{
+                handleIncrease:function(){
+                    this.counter++
+                    // 通过$emit()第一个参数事件名是特殊的input，并没有在父级上使用@input，而是直接用了v-model绑定total。这里v-model也是一个语法糖。
+                    this.$emit( 'input',this.counter )
+                }
+            }
+        });
+
+        var app = new Vue({
+            el:'#app',
+            data:{
+                total:0
+            }
+        })
+    </script>
+</body>
+</html>

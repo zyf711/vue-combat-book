@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue7-05</title>
+</head>
+<body>
+	<div id="app">
+		<my-component></my-component>
+		<my-component></my-component>
+		<my-component></my-component>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+	<script>
+		Vue.component('my-component',{
+			template:'<button @click="counter++">{{ counter }}</button>',
+			data:function(){ 
+				return { //js对象是引用关系，所以如果return出的对象引用了外部的一个对象，那这个对象就是共享的，任何修改都会同步。
+					counter: 0
+				}
+			}
+		})
+
+		var app = new Vue({
+			el:'#app'
+		})
+	</script>
+</body>
+</html>

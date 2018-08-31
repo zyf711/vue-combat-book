@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue9-08</title>
+</head>
+<body>
+	<!-- 使用js代替模板功能 -->
+	<div id="app">
+		<ele :list="list"></ele>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+	<script>
+		Vue.component('ele',{
+			render:function(createElement){
+				var nodes = [];
+				for( var i=0;i<this.list.length;i++ ){
+					nodes.push( createElement('p',this.list[i]) )
+				}
+				return createElement('div',nodes)
+			},
+			props:{
+				list:{
+					type:Array
+				}
+			}
+		})
+		var app = new Vue({
+			el:'#app',
+			data:{
+				list:[
+					'第一行',
+					'第二行',
+					'第三行'
+				]
+			}
+		})
+	</script>
+</body>
+</html>

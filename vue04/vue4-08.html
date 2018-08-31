@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue4-08</title>
+</head>
+<body>
+	<div id="app">
+		<!-- v-bind绑定内联样式 -->
+		<div :style="{ 'color':color,'font-size':font-size + 'px' }">文本</div>
+	</div>
+
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+	<script>
+		var app = new Vue({
+			el:'#app',
+			data:{
+				color:'red',
+				'font-size':14
+			}
+		})
+	</script>
+</body>
+</html>

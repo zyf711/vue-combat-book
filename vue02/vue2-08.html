@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue2-08</title>
+</head>
+<body>
+	<div id="app">
+		<a :href="href">百度一下</a>
+		<img :src="imgUrl">
+		<!-- v-bind: 动态更新html元素上的属性  可省略v-bind只要:   -->
+	</div>
+
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+	<script>
+		var app = new Vue({
+			el:'#app',
+			data:{
+				href:'http://baidu.com',
+				imgUrl:'https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=3732963493,4007690255&fm=173&app=25&f=JPEG?w=218&h=146&s=F67019C4001A09DC14E0E49203004083'
+			}
+		})
+	</script>
+</body>
+</html>

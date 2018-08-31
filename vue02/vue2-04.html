@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue2-04</title>
+</head>
+<body>
+	<div id="app">
+		<span v-html="link"></span>  <!-- v-html 输出html -->
+		<span v-pre>{{这里的内容不会被编辑}}</span> <!-- 如果想显示{{}}，可以用到v-pre -->
+	</div>
+
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+	<script>
+		var app = new Vue({
+			el:'#app',
+			data:{
+				link:'<a href="http://baidu.com">百度一下</a>'
+			}
+		})	
+	</script>
+</body>
+</html>

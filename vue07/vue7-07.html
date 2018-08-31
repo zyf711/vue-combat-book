@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue7-07</title>
+</head>
+<body>
+	<div id="app">
+		<!-- 由于html不分大小写，当用DOM模板时，驼峰命名的props名称要转为短横分隔命名 -->
+		<my-component warning-text="来自父组件的数据"></my-component>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+	<script>
+		Vue.component('my-component',{
+			props:['warningText'], 
+			template:'<div>{{ warningText }}</div>'
+		})
+
+		var app = new Vue({
+			el:'#app'
+		})
+	</script>
+</body>
+</html>

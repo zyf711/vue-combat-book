@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue9-03</title>
+</head>
+<body>
+	<div id="app">
+		<ele></ele>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+	<script>
+		Vue.component('ele',{
+			template:'<div id="element" :class="{show:show}" @click="handleClick">文本内容</div>',
+			data:function(){
+				return { show:true }
+			},
+			methods:{
+				handleClick:function(){
+					console.log('clickde!')
+				}
+			}
+		})
+
+		var app = new Vue({
+			el:'#app'
+		})
+	</script>
+</body>
+</html>

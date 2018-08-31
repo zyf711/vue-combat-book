@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue7-11</title>
+</head>
+<body>
+	<div id="app">
+		<my-component :font-size="24"></my-component>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+	<script>
+		Vue.component('my-component',{
+			props:['fontSize'], //props作为要被转变的原始值传入
+			template:'<div :style="style">组件内容</div>',
+			computed:{
+				style:function(){
+					return {
+						fontSize:this.fontSize + 'px'
+					}
+				}
+			}
+		})
+
+		var app = new Vue({
+			el:'#app'
+		})
+	</script>
+</body>
+</html>

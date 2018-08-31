@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue9-04</title>
+</head>
+<body>
+	<div id="app">
+		<ele></ele>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+	<script>
+		Vue.component('ele',{
+			render:function(createElement){
+				return createElement(
+					// { String | Object | Function }
+					// 一个html标签，组件选项，或一个函数
+					// 必须return上述其一
+						'div',
+					// { Object }
+					// 一个对应属性的数据对象，可选
+					// 可在template中使用
+						{
+							class:{ 'show':this.show },
+							arrts:{ id:'element' },
+							on:{ click:this.handleClick }
+						},
+						'文本内容'
+					// { String | Array }
+					// 子节点(vNodes),可选
+					)
+			},
+			data:function(){
+				return { show:true }
+			},
+			methods:{
+				handleClick:function(){
+					console.log('clickde!')
+				}
+			}
+		})
+
+		var app = new Vue({
+			el:'#app'
+		})
+	</script>
+</body>
+</html>

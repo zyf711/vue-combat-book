@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue1-01</title>
+</head>
+<body>
+		<div id="app">
+			<button	v-if="showBtn" v-on:click="handleClick">点我</button>
+		</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+	<script>
+		var app = new Vue({
+			el:'#app',
+			data:{
+				showBtn:false
+			},
+			methods:{
+				handleClick:function(){
+					console.log('Clicked!')
+				}
+			}
+		})
+	</script>
+</body>
+</html>

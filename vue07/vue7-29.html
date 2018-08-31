@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue7-29</title>
+</head>
+<body>
+	<div id="app">
+		<child-component></child-component>
+		<!-- 在script标签里使用type="text/x-template" 并且指定一个id，将这个id赋给template。在script标签里就可以写html不考虑换行等问题了 -->
+		<script type="text/x-template" id="com">
+			<div>
+				<div>这里是组件内容</div>
+				<div>这里是组件内容</div>
+				<div>这里是组件内容</div>
+			</div>
+		</script>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+	<script>
+		Vue.component('child-component',{
+			template:'#com'
+		})
+
+		var app = new Vue({
+			el:'#app'
+		})
+
+		// vue初衷并不是滥用它，，因为它将模板和组件的其他定义隔离了。
+	</script>
+</body>
+</html>

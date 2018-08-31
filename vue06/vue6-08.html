@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue6-08</title>
+</head>
+<body>
+	<div id="app">
+		<!-- 使用修饰符.lazy会转变为在change事件中同步输入框的数据。 （失去焦点或按回车才更新） -->
+		<input type="text" v-model.lazy="message1">
+		<p>{{ message1 }}</p>
+
+		<!-- 使用修饰符.number可以将输入转换为Number类型，否则虽然输入的是数字，但他类型其实是String -->
+		<input type="text" v-model.number="message2">
+		<p>{{ typeof message2 }}</p>
+
+		<!-- 使用修饰符.trim可以自动过滤输入的首尾空格 -->
+		<input type="text" v-model.trim="message3">
+		<p>{{ message3 }}</p>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+	<script>
+		var app = new Vue({
+			el:'#app',
+			data:{
+				message1:'',
+				message2:'',
+				message3:''
+			}
+		})
+	</script>
+</body>
+</html>

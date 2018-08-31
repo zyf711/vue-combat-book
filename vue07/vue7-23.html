@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue7-23</title>
+</head>
+<body>
+	<div id="app">
+		<child-component :count="1"></child-component>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+	<script>
+		Vue.component('child-component',{
+			// 组件在它的模板内递归调用自己，只要给组件设置name即可
+			name:'child-component',
+			props:{
+				count:{
+					type:Number,
+					default:1
+				}
+			},
+			// 必须给个条件限制递归数量，否则会抛出错误
+			template:'<div class="child"><child-component :count="count+1" v-if="count<6"></child-component></div>'
+		})
+
+		var app = new Vue({
+			el:'#app'
+		})
+	</script>
+</body>
+</html>

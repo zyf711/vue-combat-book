@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue7-17</title>
+</head>
+<body>
+	<!-- 子组件索引 -->
+	<div id="app">
+		<button @click="handleRef">通过ref获取子组件实例</button>
+		<!-- 在父组件模板中，子组件标签上使用ref指定一个名称，并在父组件内通过this.$refs来访问子组件 -->
+		<component-a ref="comA"></component-a> 
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+	<script>
+		Vue.component('component-a',{
+			template:'<div>子组件</div>',
+			data:function(){
+				return{ message:'子组件内容' }
+			}
+		});
+
+		var app = new Vue({
+			el:'#app',
+			methods:{
+				handleRef:function(){
+					// 通过$refs来访问指定实例
+					var msg = this.$refs.comA.message;
+					console.log(msg)
+				}
+			}
+		})
+
+		// $refs只在组件渲染完成后才填充，并且它是非响应式的。它仅仅作为一个直接访问子组件的应急方案，应避免在模板或计算属性中使用
+	</script>
+</body>
+</html>

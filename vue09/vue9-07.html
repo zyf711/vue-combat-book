@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue9-07</title>
+</head>
+<body>
+	<!-- 使用js代替模板功能 -->
+	<!-- 在Render函数中，无法使用Vue内置指令，如v-if v-for等 无论实现什么功能，可以用原生js-->
+	<div id="app">
+		<ele :show="show"></ele>
+		<button @click="show = !show">切换</button>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+	<script>
+		Vue.component('ele',{
+			render:function(createElement){
+				if( this.show ){
+					return createElement('p','show的值为true')
+				}else{
+					return createElement('p','show的值为false')
+				}
+			},
+			props:{
+				show:{
+					type:Boolean,
+					default:false
+				}
+			}
+		})
+		var app = new Vue({
+			el:'#app',
+			data:{
+				show:false
+			}
+		})
+	</script>
+</body>
+</html>

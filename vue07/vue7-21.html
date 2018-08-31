@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue7-21</title>
+</head>
+<body>
+
+	<div id="app">
+		<child-component :books="bk">
+			<!-- 作用域插槽也可以是具名的slot -->
+			<template slot="sn" slot-scope="props">
+				<li>{{ props.bookName }}</li>
+			</template>
+		</child-component>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+	<script>
+		Vue.component('child-component',{
+			props:{
+				books:{ //如果是数组或对象，默认值必须是一个函数来返回
+					type:Array,
+					default:function(){
+						return [];
+					}
+				}
+			},
+			// 或者props:['books']
+			template:'<ul><slot name="sn" v-for="b in books" :book-name="b.name"></slot></ul>'
+		});
+
+		var app = new Vue({
+			el:'#app',
+			data:{
+				bk:[
+					{name:'《Vue.js实战》'},
+					{name:'javascript高级程序设计'},
+					{name:'javascrip语言精粹'}
+				]
+			}
+		})
+	</script>
+</body>
+</html>

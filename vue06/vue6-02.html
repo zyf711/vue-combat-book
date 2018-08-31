@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue6-02</title>
+</head>
+<body>
+	<div id="app">
+		<!-- 中文输入法输入，拼音阶段也能更新数据 -->
+		<!-- 带括号的是函数调用，直接立即执行函数；不带括号的是绑定事件，事件触发再执行。 -->
+		<input type="text" @input="handleInput" placeholder="输入"> 
+		<p>输入的内容是：{{ message }}</p>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+	<script>
+		var app = new Vue({
+			el:'#app',
+			data:{
+				message:''
+			},
+			methods:{
+				handleInput:function(e){
+					this.message = e.target.value
+				}
+			}
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue7-19</title>
+</head>
+<body>
+	<!-- 给<slot>元素指定一个name后可以分发多个内容，具名slot可以与单个slot共存 -->
+	<div id="app">
+		<child-component>
+			<h2 slot="header">标题</h2>
+			<div slot="footer">底部信息</div>
+			<p>内容正文</p>
+			<p>更多内容正文</p>
+		</child-component>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+	<script>
+		Vue.component('child-component',{
+			// 下边的main里slot没有使用name特性，它将作为默认slot出现，父组件没有使用slot特性的元素与内容都出现在这里
+			// 如果没指定默认匿名slot，父组件内多余的内容片断都将被抛弃
+			template:'\
+			<div class="container">\
+			<div class="header"><slot name="header"></slot></div>\
+			<div class="main"><slot></slot></div>\
+			<div class="footer"><slot name="footer"></slot></div>\
+			</div>'
+		});
+
+		var app = new Vue({
+			el:'#app'
+		})
+	</script>
+</body>
+</html>

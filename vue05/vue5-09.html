@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue5-09</title>
+</head>
+<body>
+	<div id="app">
+		<ul>
+			<template v-for="book in books">
+				<li>书名：{{ book.name }}</li>
+				<li>作者：{{ book.author }}</li>
+			</template>
+		</ul>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+	<script>
+		var app = new Vue({
+			el:'#app',
+			data:{
+				books:[
+					{
+						name:'第1本书',
+						author:'第1作者'
+					},{
+						name:'第2本书javascript',
+						author:'第2作者'
+					},{
+						name:'第3本书javascript',
+						author:'第3作者'
+					}
+				]
+			}
+		})
+
+		// vue最大化复用DOM元素，不必担心在这里新数组覆盖旧数组有性能问题
+		app.books = app.books.filter(function(item){ //filter(),concat(),slice()都返回新数组。
+			return item.name.match(/javascript/)
+		})
+	</script>
+</body>
+</html>

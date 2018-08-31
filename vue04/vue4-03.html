@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue4-03</title>
+</head>
+<body>
+	<div id="app">
+		<div :class="classes"></div>
+		<!-- 当:class的表达式过长或者逻辑复杂时，可以绑定一个计算属性 -->
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+	<script>
+		var app = new Vue({
+			el:'#app',
+			data:{
+				isActive:true,
+				error: null
+			},
+			computed:{
+				classes:function(){
+					return {
+						active: this.isActive && !this.error,
+						'text-fail': this.error && this.error.type === 'fail' 
+						//'text-fail'这里有-所以要加引号
+					}
+				}
+			}
+		})
+	</script>
+</body>
+</html>

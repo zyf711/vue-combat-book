@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue7-28</title>
+</head>
+<body>
+<!-- 	vue在观察到数据变化时并不是直接更新DOM。而是开启一个列队，缓冲在同一事件循环中发生的所有数据改变，去除重复数据。避免不必要的计算和DOM操作。然后在下一个事件循环tick中，刷新了队列并执行实际操作。 -->
+	<div id="app">
+		<div id="div" v-if="showDiv">这是一段文本</div>
+		<button @click="getText">获取div内容</button>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+	<script>
+		var app = new Vue({
+			el:'#app',
+			data:{ showDiv:false },
+			methods:{
+				getText:function(){
+					this.showDiv = true; //执行这里时vue扔没创建div
+					// console.log(document.getElementById('div').innerHTML)
+					this.$nextTick(function(){ //$nextTick用来知道什么时候DOM更新完成的
+						var text = document.getElementById('div').innerHTML;
+						console.log(text);
+					})
+				}
+			}
+		})
+		// Vue核心思想就是数据驱动DOM，但很多业务里，避免不了使用第三方库，比如popper.js,swiper等，这些基于原生js的库都有创建和更新及销毁的完整声明周期，与Vue配合使用时，就要利用好$nextTick
+	</script>
+</body>
+</html>

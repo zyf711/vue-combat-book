@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue2-07</title>
+</head>
+<body>
+	<div id="app">
+		<p v-if="show">显示这段文本</p>
+	</div>
+
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+	<script>
+		var app = new Vue({
+			el:'#app',
+			data:{
+				show:true
+			}
+		})	
+	</script>
+</body>
+</html>

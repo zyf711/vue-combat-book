@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue2-01</title>
+</head>
+<body>
+	<div id="app">
+		<input type="text" v-model="name" placeholder="你的名字">
+		<h1>你好, {{ name }}</h1>
+		<!-- {{}} 文本插值，自动将双向绑定的数据实时显示出来 -->
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+	<script>
+		var app = new Vue({
+			el:"#app",
+			data:{ //v-model的值对应data选项中的name字段
+				name:''
+			}
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue7-02</title>
+</head>
+<body>
+	<div id="app">
+		<my-component></my-component>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+	<script>
+		var Child = {
+			template : '<div>局部注册组件内容</div>'
+		}
+
+		var app = new Vue({
+			el:'#app',
+			components:{ //vue实例中，用components可以局部注册组件。只在该实例作用域下有效。
+				'my-component' : Child
+			}
+		})
+	</script>
+</body>
+</html>

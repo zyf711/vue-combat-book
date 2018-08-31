@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue3-03</title>
+</head>
+<body>
+	<div id="app">
+		姓名:{{ fullName }}
+	</div>
+
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+	<script>
+		var app = new Vue({
+			el:'#app',
+			data:{
+				fristName:'Jack',
+				lastName:'chen'
+			},
+			computed:{
+				fullName:{
+					// getter,用于读取
+					get:function(){
+						return this.fristName + ' ' + this.lastName 
+					},
+					// setter,写入时触发
+					set:function(newValue){
+						var names = newValue.split(',');
+						this.fristName = names[0];
+						this.lastName = names[names.length - 1];
+					}
+				}
+			}
+		})
+
+		// 当执行 app.fullName = 'john Doe' 时，setter就会被调用，数据视图都会更新
+
+	</script>
+</body>
+</html>

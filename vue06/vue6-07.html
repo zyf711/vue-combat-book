@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue6-07</title>
+</head>
+<body>
+	<div id="app">
+		<!-- v-model绑定动态数据，用v-bind绑定value实现 -->
+		<input type="radio" name="" id="radio" v-model="picked" :value="value">
+		<label for="radio">单选按钮</label>
+		<p>{{ picked }}</p>
+		<p>{{ value }}</p>
+
+		<input type="checkbox" name="" id="checkbox" v-model="toggle" :true-value="value1" :false-value="value2">
+		<label for="checkbox">复选框</label>
+		<p>{{ toggle }}</p>
+		<p>{{ value1 }}</p>
+		<p>{{ value2 }}</p>
+
+		<select name="" id="" v-model="selected">
+			<option :value=" {number:123} ">123</option>
+		</select>
+		{{ selected.number }}
+		
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+	<script>
+		var app = new Vue({
+			el:'#app',
+			data:{
+				picked:true,
+				value:123,
+				toggle:false,
+				value1:'a',
+				value2:'b',
+				selected:''
+			}
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>可排序的表格组件</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div id="app" v-cloak>
+		<!-- :data="data" :columns="columns" 把数据传递给子组件 -->
+		<v-table :data="data" :columns="columns"></v-table>
+		<button @click="handleAddData">添加数据</button>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+	<script src="table.js"></script>
+	<script src="index.js"></script>
+</body>
+</html>

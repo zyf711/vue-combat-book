@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue9-09</title>
+</head>
+<body>
+	<!-- 使用js代替模板功能 -->
+	<!-- if...else语句 map方法 render配合渲染一个列表 -->
+	<div id="app">
+		<ele :list="list"></ele>
+		<button @click="handleClick">显示列表</button>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+	<script>
+		Vue.component('ele',{
+			render:function(createElement){
+				if( this.list.length ){
+					return createElement('ul',this.list.map(function(item){
+						return createElement('li',item)
+					}))
+				}else{
+					return createElement('p','列表为空')
+				}
+			},
+			props:{
+				list:{
+					type:Array,
+					default:function(){ return [] }
+				}
+			}
+		})
+
+		var app = new Vue({
+			el:'#app',
+			data:{
+				list:[]
+			},
+			methods:{
+				handleClick:function(){
+					this.list = [
+					'第一行',
+					'第二行',
+					'第三行'
+					]
+				}
+			}
+		})
+	</script>
+</body>
+</html>

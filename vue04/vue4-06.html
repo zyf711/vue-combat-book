@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue4-06</title>
+</head>
+<body>
+	<div id="app">
+		<div :class="[{'active':isAcitve},errorCls]"></div>
+		<!-- 可以在数组语法里使用对象语法 -->
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+	<script>
+		var app = new Vue({
+			el:'#app',
+			data:{
+				isAcitve:true,
+				errorCls:'error'
+			}
+		})
+	</script>
+</body>
+</html>

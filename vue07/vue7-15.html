@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue7-15</title>
+</head>
+<body>
+	<!-- 中央事件总线bus -->
+	<div id="app">
+		{{ message }}
+		<component-a></component-a>
+	</div>
+
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+	<script>
+		var bus = new Vue(); //创建一个空的vue实例，作为中央事件总线bus
+
+		Vue.component('component-a',{
+			template:'<button @click="handleEvent">事件传递</button>',
+			methods:{
+				handleEvent:function(){
+					// 点击按钮，通过bus把事件on-message发出去
+					bus.$emit('on-message','来自组件component-a的内容') //子组件用$emit()来触发事件
+				}
+			}
+		})
+
+		var app = new Vue({
+			el:'#app',
+			data:{
+				message:''
+			},
+			mounted:function(){  //el挂载到实例app上时调用mounted
+				var _this = this;
+				// 在实例初始化时，监听来自bus实例的事件on-message 进而在回调里完成业务
+				bus.$on('on-message',function(msg){ //父组件用$on来监听子组件
+					_this.message = msg;
+				})
+			}
+		})
+	</script>
+</body>
+</html>

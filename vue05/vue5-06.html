@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue5-06</title>
+</head>
+<body>
+	<div id="app">
+		<ul>
+			<li v-for="book in books">{{ book.name }}</li>
+			<!-- 数组遍历或枚举一个对象循环显示时用 v-for（需要结合in） -->
+			<!-- 在此，列表渲染也可用of来代替in  -->
+		</ul>
+		<ul>
+			<li v-for="(food,index) in foods">{{ index }} - {{ food.name }}</li>
+			<!-- v-for支持一个可选参数作为当前项的索引 -->
+		</ul>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+	<script>
+		var app = new Vue({
+			el:'#app',
+			data:{
+				books:[
+					{name:'vue实战1'},
+					{name:'vue实战2'},
+					{name:'vue实战3'}
+				],
+				foods:[
+					{name:'rice1'},
+					{name:'rice2'},
+					{name:'rice3'}
+				]
+			}
+		})
+	</script>
+</body>
+</html>

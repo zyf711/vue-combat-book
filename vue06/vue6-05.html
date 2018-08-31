@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue6-05</title>
+</head>
+<body>
+	<div id="app">
+		<!-- v-model优先匹配value值，如果没有就直接匹配option的text -->
+		<select name="" id="" v-model="selected">
+			<option>html</option>
+			<option value="js">javascript</option>
+			<option>css</option>
+		</select>
+		<p>选择的是：{{ selected }}</p>
+
+		<!-- select添加multiple就可以多选了,v-model绑定的是一个数组 -->
+		<select name="" id="" v-model="mul" multiple>
+			<option>football</option>
+			<option>basketball</option>
+			<option>volleyball</option>
+		</select>
+		<p>选择的是：{{ mul }}</p>
+
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+	<script>
+		var app = new Vue({
+			el:'#app',
+			data:{
+				selected:'js',
+				mul:['football','volleyball']
+			}
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue6-04</title>
+</head>
+<body>
+	<div id="app">
+		<!-- 组合单选或者组合多选，都需要用v-model配合value使用。 -->
+		<!-- 数据data里的picked值与单选的value值一致时，就会选中该项 -->
+		<input type="radio" name="" id="html" v-model="picked" value="html">
+		<label for="html">html</label>
+		<input type="radio" name="" id="css" v-model="picked" value="css">
+		<label for="css">css</label>
+		<input type="radio" name="" id="js" v-model="picked" value="js">
+		<label for="js">js</label>
+
+		<!-- 多个勾选框都绑定到同一个数组类型的数据，value值在数组中是双向的。 -->
+		<!-- 数据data里的checked数组中有value的值，就会选中这项 -->
+		<input type="checkbox" name="" id="football" value="football" v-model="checked">
+		<label for="football">football</label>
+		<input type="checkbox" name="" id="basketball" value="basketball" v-model="checked">
+		<label for="basketball">basketball</label>
+		<input type="checkbox" name="" id="volleyball" value="volleyball" v-model="checked">
+		<label for="volleyball">volleyball</label>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+	<script>
+		var app = new Vue({
+			el:'#app',
+			data:{
+				picked:'js',
+				checked:['football','volleyball']
+			}
+		})
+	</script>
+</body>
+</html>

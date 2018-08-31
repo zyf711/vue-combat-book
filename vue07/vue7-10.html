@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue7-10</title>
+</head>
+<body>
+	<!-- js中对象和数组是引用类型，指向同一个内存空间，所以props是对象和数组时，在子组件内改变是会影响父组件的 -->
+	<div id="app">
+		<my-component :init-count="1"></my-component>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+	<script>
+		Vue.component('my-component',{
+			props:['initCount'], 
+			template:'<div>{{ count }}</div>',
+			data:function(){
+				return {
+					count : this.initCount
+					// 组件data内声明数据count，初始化获取来自父组件的ininCount，避免直接操作ininCount
+				}
+			}
+		})
+
+		var app = new Vue({
+			el:'#app'
+		})
+	</script>
+</body>
+</html>

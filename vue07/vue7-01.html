@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue7-01</title>
+</head>
+<body>
+	<div id="app">
+		<my-component></my-component>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+	<script>
+		// 要在父实例中使用这个组件，必须要在实例创建前注册
+		Vue.component('my-component',{
+			template:'<div>这里是组件的内容</div>'
+			// template的DOM结构必须被一个元素包含，比如上边不带div不行
+		})
+
+		var app = new Vue({
+			el:'#app'
+		})
+	</script>
+</body>
+</html>

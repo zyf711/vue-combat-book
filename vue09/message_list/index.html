@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>留言列表</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div id="app" v-cloak style="width: 500px;margin: 0 auto;">
+		<div class="message">
+			<!-- 使用v-model将username和message双向绑定 -->
+			<v-input v-model="username"></v-input>
+			<v-textarea v-model="message" ref="message"></v-textarea>
+			<button @click="handleSend">发布</button>
+		</div>
+		<list :list="list" @reply="handleReply"></list>
+	</div>
+
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+	<script src="input.js"></script>
+	<script src="list.js"></script>
+	<script src="index.js"></script>
+</body>
+</html>

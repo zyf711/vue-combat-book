@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>数字输入框组件</title>
+</head>
+<body>
+	<div id="app">
+		<input-number :max="100" :min="0" :step="2" v-model="value"></input-number>
+		<!-- 大多数的表单组件都应该有一个v-model -->
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+	<script src="input-number.js"></script>
+	<script src="index.js"></script>
+</body>
+</html>

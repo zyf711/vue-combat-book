@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue7-20</title>
+</head>
+<body>
+	<!-- 作用域插槽是一种特殊的slot，使用一个可以重复的模板替换已渲染元素 -->
+
+	<div id="app">
+		<child-component>
+			<!-- 这里的props只是起的一个临时变量名。template内可以通过props访问来自子组件插槽的自定义名字的数据msg。
+				vue2.5+用slot-scope代替了scope -->
+			<template slot-scope="props">
+			<p>来自父组件的内容</p>
+			<p>{{ props.msg }}</p>	
+			</template>
+		</child-component>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+	<script>
+		Vue.component('child-component',{
+			template:'<div class="container"><slot msg="来自子组件的内容"></slot></div>'
+		});
+
+		var app = new Vue({
+			el:'#app'
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue1-02</title>
+</head>
+<body>
+	<div id="app">
+		<ul>
+			<li v-for="book in books">{{book.name}}</li>
+		</ul>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+	<script>
+		new Vue({
+			el:'#app',
+			data:{
+				books:[
+					{name:'《Vue.js实战》'},
+					{name:'《javascript语言精粹》'},
+					{name:'《javascript高级程序设计》'}
+				]
+			}
+		})
+	</script>
+</body>
+</html>

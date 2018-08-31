@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue2-06</title>
+</head>
+<body>
+	<div id="app">
+		{{ date | formatDate }} <!-- | 管道符，用于格式化文本，比如字母全部大写，货币千位使用逗号分隔符。 通过给实例添加filters来设置-->
+	<!-- 
+		过滤器可以串联也可有参数
+		{{ message | filterA | filterB }}
+		{{ message | filterA( 'arg2','arg3' ) }} 第二个和第三个参数，因为第一个是数据本身  
+		过滤器应该处理简单文本转换，复杂数据变换应用计算属性
+	--> 
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+	<script>
+		var padDate = function(value){
+			return value < 10 ? '0' + value : value;
+		}
+		var app = new Vue({
+			el:'#app',
+			data:{
+				date:new Date()
+			},
+			filters:{
+				formatDate:function(value){ //value就是需要过滤的数据date
+					var date = new Date(value);
+					var year = date.getFullYear();
+					var month = padDate(date.getMonth() + 1);
+					var day = padDate(date.getDate());
+					var hours = padDate(date.getHours());
+					var minutes = padDate(date.getMinutes());
+					var seconds = padDate(date.getSeconds());
+					return year + '-' + month + '-' + day + '-' + hours + '-' + minutes + '-' + seconds;
+				}
+			},
+			mounted:function(){
+				var _this = this;
+				this.timer = setInterval(function(){
+					_this.date = new Date();
+				},1000)
+			},
+			beforeDestroy:function(){
+				if ( this.timer ) {
+					clearInterval( this.timer );
+				}
+			}
+		})
+	</script>
+</body>
+</html>

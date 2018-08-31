@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue3-02</title>
+</head>
+<body>
+	<div id="app">
+		总价：{{ prices }}
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+	<script>
+		var app = new Vue({
+			el:'#app',
+			data:{
+				package1:[
+					{
+						name:'iphonex',
+						price:2000,
+						count:2
+					},
+					{
+						name:'ipad',
+						price:1800,
+						count:1
+					}
+				],
+				package2:[
+					{
+						name:'apple',
+						price:3,
+						count:5
+					},
+					{
+						name:'banana',
+						price:5,
+						count:10
+					}
+				]
+			},
+			computed:{ //计算属性computed是给予他的依赖缓存的，计算属性所依赖的数据发生变化，他才会重新取值，遍历大数组和做大量计算时当用计算属性，除非不希望得到缓存。methods则不同，只要重新渲染，就会被调用，函数就会被执行。
+				prices:function(){
+					var prices = 0;
+					for (var i = 0; i < this.package1.length; i++) {
+						prices += this.package1[i].price * this.package1[i].count;
+					}
+					for (var i = 0; i < this.package2.length; i++) {
+						prices += this.package2[i].price * this.package2[i].count;
+					}
+					return prices;
+				}
+			}
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue7-09</title>
+</head>
+<body>
+	<div id="app">
+		<!-- 如果直接传递数字，布尔值，数组，对象，而且不使用v-bind，那传递的仅仅是字符串 -->
+		<my-component message="[1,2,3]"></my-component>
+		<my-component :message="[1,2,3]"></my-component>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+	<script>
+		Vue.component('my-component',{
+			props:['message'], 
+			template:'<div>{{ message.length }}</div>'
+		})
+
+		var app = new Vue({
+			el:'#app'
+		})
+	</script>
+</body>
+</html>

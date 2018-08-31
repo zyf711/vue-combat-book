@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue9-05</title>
+</head>
+<body>
+	<!-- 所有组件树中，如果vNode是组件或含有组件slot，namevNode必须唯一 -->
+	<!-- 重复渲染多个组件或元素 -->
+
+	<div id="app">
+		<ele></ele>
+	</div>
+
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+	<script>
+		// 局部声明组件
+		var Child = {
+			render:function(createElement){
+				return createElement( 'p','text' )
+			}
+		}
+		Vue.component('ele',{
+			render:function(createElement){
+				return createElement(
+					'div',
+					// Array.apply(null,array)要求第二个参数是一个数组，Array.apply(null,[1,2,3])返回[1,2,3]
+					// 当第二个参数为一个带有length属性的对象时，则会当做一个数组来使用。
+					// 所以Array.apply(null,{length:5})返回的结果为[undefined,undefined,undefined,undefined,undefined]
+					//相当于创建数组里边五个undefined 
+					// 	[undefined,undefined,undefined,undefined,undefined].map(function(){
+					// 	return createElement( Child )
+					// })
+					Array.apply( null,{
+						length:5
+					}).map(function(){
+						// map() 方法返回一个新数组，数组中的元素为原始数组元素调用函数处理后的值。
+						return createElement( Child )
+					})
+				)
+			}
+		})
+		var app = new Vue({
+			el:'#app'
+		})
+	</script>
+</body>
+</html>

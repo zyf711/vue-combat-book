@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue5-04</title>
+</head>
+<body>
+	<!-- 出于效率考虑，vue渲染元素时会尽可能复用已有元素。 -->
+	<!-- 下例键入内容虽然DOM变了，但之前输入内容没变，只替换了placeholder内容，说明input被复用了。 
+	vue提供key属性，可以让你自己决定时否要复用元素。key值时唯一的。 -->
+	<div id="app">
+		<template v-if="type === 'name'">
+			<label for="">用户名：</label>
+			<!-- <input type="text" placeholder="输入用户名"> -->
+			<input type="text" placeholder="输入用户名" key="name-input">
+		</template>
+		<template v-else>
+			<label for="">邮箱：</label>
+			<!-- <input type="text" placeholder="输入邮箱"> -->
+			<input type="text" placeholder="输入邮箱" key="mail-input">
+		</template>
+		<button @click="handleToggleClick">切换输入类型</button>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+	<script>
+		var app = new Vue({
+			el:'#app',
+			data:{
+				type:'name'
+			},
+			methods:{
+				handleToggleClick:function(){
+					this.type = this.type === 'name' ? 'mail' : 'name'
+				}
+			}
+		})
+	</script>
+</body>
+</html>

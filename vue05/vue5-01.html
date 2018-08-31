@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue5-01</title>
+	<style>
+		[v-cloak]{display: none;}
+	</style>
+</head>
+<body>
+	<!-- v-cloak配合上边css解决网速慢闪烁{{}} -->
+	<div id="app" v-cloak>
+		{{message}}
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+	<script>
+		var app = new Vue({
+			el:'#app',
+			data:{
+				message:'这是一段文本'
+			}
+		})
+	</script>
+</body>
+</html>

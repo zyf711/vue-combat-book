@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue2-03</title>
+</head>
+<body>
+	<div id="app">{{date}}</div>
+
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+	<script>
+		var app = new Vue({
+			el:'#app',
+			data:{
+				date:new Date()
+			},
+			mounted:function(){
+				this.timer = setInterval(() =>{
+					this.date = new Date()
+				},1000)
+			},
+			beforeDestroy:function(){ //实例销毁前调用
+				if(this.timer){
+					clearInterval(this.timer)
+				}
+			}
+		})
+	</script>
+</body>
+</html>

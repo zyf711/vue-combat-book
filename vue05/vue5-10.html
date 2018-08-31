@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue5-10</title>
+</head>
+<body>
+	<div id="app">
+		<ul>
+			<template v-for="book in books">
+				<li>书名：{{ book.name }}</li>
+				<li>作者：{{ book.author }}</li>
+			</template>
+		</ul>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+	<script>
+		var app = new Vue({
+			el:'#app',
+			data:{
+				books:[
+					{
+						name:'第1本书',
+						author:'第1作者'
+					},{
+						name:'第2本书javascript',
+						author:'第2作者'
+					},{
+						name:'第3本书javascript',
+						author:'第3作者'
+					}
+				]
+			}
+		})
+
+		// array.splice(index,howmany,item1,...itemX)
+		// index 必需。规定从何处添加/删除元素。
+		// howmany必需。规定应该删除多少元素。必须是数字，但可以是 "0"
+		// item1,...itemX要添加到数组的新元素
+
+		app.books.splice(3,0,{
+			name:'最后一本书',
+			author:'最后一本书作者'
+		})	
+
+		var a = app.books.splice(1) // splice()如果删除了元素，则返回的是含有被删除的元素的数组。
+
+
+		// 在以下变动数组中，vue是不能检测到的也不会触发视图更新，可以用splice()解决或vue内置set方法
+		// 通过索引直接设置： app.books[3] = {...}
+		// 修改数组长度:app.books.length = 1
+	</script>
+</body>
+</html>

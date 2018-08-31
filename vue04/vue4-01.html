@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue4-01</title>
+</head>
+<body>
+	<div id="app">
+		<div :class="{'active':isActive}"></div>
+		<!-- 类名active依赖于数据isActive为true时才会显示 -->
+	</div>
+
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+	<script>
+		var app = new Vue({
+			el:'#app',
+			data:{
+				isActive:true
+			}
+		})
+	</script>
+</body>
+</html>

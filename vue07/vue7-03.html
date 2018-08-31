@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue7-03</title>
+</head>
+<body>
+<!-- vue组件的模板在某些情况下会受到html的限制，比如table内规定只允许tr，td等表格元素。 -->
+<!-- 常见的限制元素还有ul，ol，select -->
+	<div id="app">
+		<table>
+			<tbody is="my-component"></tbody>  <!-- 用is属性来挂载组件，tbody在渲染时会被替换成组件内容 -->			
+			<my-component></my-component>
+		</table>
+	</div>
+	
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+	<script>
+		Vue.component('my-component',{
+			template:'<div>这里是组件的内容</div>'
+		})
+
+		var app = new Vue({
+			el:'#app'
+		})
+	</script>
+</body>
+</html>

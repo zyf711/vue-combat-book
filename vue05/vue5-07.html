@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue5-07</title>
+</head>
+<body>
+	<div id="app">
+		<ul>
+			<template v-for=" book in books ">
+				<li>书名：{{ book.name }}</li>
+				<li>作者：{{ book.author }}</li>
+			</template>
+		</ul>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+	<script>
+		var app = new Vue({
+			el:'#app',
+			data:{
+				books:[
+					{
+						name:'第1本书',
+						author:'作者1'
+					},{
+						name:'第2本书',
+						author:'作者2'
+					},{
+						name:'第3本书',
+						author:'作者3'
+					}
+				]
+			}
+		})
+	</script>
+</body>
+</html>

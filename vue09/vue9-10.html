@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue9-10</title>
+</head>
+<body>
+	<!-- 使用js代替模板功能 -->
+	<!-- render函数里也没有与v-model对应的API。需要自己来实现逻辑 -->
+	<!-- v-model就是prop:value和event:input组合使用的一个语法糖 -->
+	<div id="app">
+		<ele></ele>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+	<script>
+		Vue.component('ele',{
+			render:function(createElement){
+				// var _this = this;
+				return createElement('div',[// 子节点(vNodes),可选
+						createElement('input',{
+							domProps:{ //DOM属性，例如innerHTML:'baz'
+								value:this.value
+							},
+							on:{
+								// input:function(event){
+								input:(event) =>{
+									// _this.value = event.target.value
+									this.value = event.target.value
+								}
+							}
+						}),
+						createElement('p','value:' + this.value)
+					])
+			},
+			data:function(){
+				return { value:'' }
+			}
+		})
+		var app = new Vue({
+			el:'#app'
+		})
+
+		// Render函数对应template写法：
+		// <div><input v-model="value"/><p>value:{{value}}</p></div>
+	</script>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue9-13</title>
+</head>
+<body>
+	<div id="app">
+		<smart-item :data="data"></smart-item>
+		<button @click="change('img')">切换为图片组件</button>
+		<button @click="change('video')">切换为视频组件</button>
+		<button @click="change('text')">切换为文本组件</button>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+	<script>
+		// 函数组件化 functional为true，使组件无data和this上下文，这样用render函数返回虚拟节点更容易渲染。函数化组件只是一个函数，渲染开销要小很多
+		
+		// 图片组件选项
+		var ImgItem = {
+			props:['data'],
+			render:function(createElement){
+				return  createElement('div',[
+						createElement('p','图片组件'),
+						createElement('img',{
+							attrs:{ src:this.data.url }
+						})
+					])
+			}
+		}
+		// 视频组件选项
+		var VideoItem = {
+			props:['data'],
+			render:function(createElement){
+				return  createElement('div',[
+						createElement('p','视频组件'),
+						createElement('video',{
+							attrs:{ 
+									src:this.data.url,
+									controls:'controls',
+									autoplay:'autoplay'	
+								 }
+						})
+					])
+			}
+		}
+		// 纯文本组件选项
+		var TextItem = {
+			props:['data'],
+			render:function(createElement){
+				return  createElement('div',[
+						createElement('p','纯文本组件'),
+						createElement('p',this.data.content)
+					])
+			}
+		}
+
+		Vue.component('smart-item',{
+			functional:true, 
+			render:function(createElement,context){ //context参数提供临时上下文
+				//根据传入的数据，只能判断显示哪种组件
+				function getComponent(){
+					var data = context.props.data //context.props.data相当于this.data
+					if(data.type === 'img') return ImgItem;
+					if(data.type === 'video') return VideoItem;
+					return TextItem;
+				}
+				return createElement(
+						getComponent(),
+							{
+								props:{
+										// 把smart-item的data传到选择的组件里的prop:data
+										// 相当于template里边给标签:data="data"
+										data:context.props.data
+								    }
+							},
+							context.children //相当于不是函数组件化里边的this.$solts.default
+					)
+			},
+			props:{
+				data:{
+					type:Object,
+					required:true
+				}
+			}
+		})
+
+		var app = new Vue({
+			el:'#app',
+			data:{
+				data:{}
+			},
+			methods:{
+				// 切换不同类型组件的数据
+				change:function(type){
+					if( type === 'img' ){
+						this.data = {
+							type:'img',
+							url:'https://raw.githubusercontent.com/iview/iview/master/assets/logo.png'
+						}
+					}else if( type === 'video' ){
+						this.data = {
+							type:'video',
+							url:'http://vjs.zencdn.net/v/oceans.mp4'
+						}
+					}else if( type === 'text' ){
+						this.data = {
+							type:'text',
+							content:'这是一段纯文本'
+						}
+					}
+				} 
+			},
+			created:function(){
+				this.change('img')
+			}
+		})
+	</script>
+</body>
+</html>

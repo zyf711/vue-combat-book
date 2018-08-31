@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue7-26</title>
+</head>
+<body>
+	<div id="app">
+		<!-- 动态改变currentView的值就可以动态挂载组件了，也可以直接绑定在组件对象上 -->
+		<component :is="currentView"></component>
+	</div>
+
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+	<script>
+		var home = { template:'<p>welcome home</p>' };
+
+		var app = new Vue({
+			el:'#app',
+			data:{
+				currentView:home
+			},
+		})
+	</script>
+</body>
+</html>

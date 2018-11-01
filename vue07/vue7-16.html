@@ -16,7 +16,7 @@
 	<script>
 
 		Vue.component('component-a',{
-			template:'<button @click="handleEvent">通过父链直接修改数据</button>',
+			template:'<button @click="handleEvent">通过this.$parent直接修改父组件内容</button>',
 			methods:{
 				handleEvent:function(){
 					// 访问到父链可以做任何操作，比如直接修改数据

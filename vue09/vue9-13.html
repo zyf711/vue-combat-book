@@ -55,9 +55,9 @@
 		}
 
 		Vue.component('smart-item',{
-			functional:true, 
+			functional:true,  //设为组件无状态无实例，也就是没data和this。这样render函数返回虚拟节点更易渲染
 			render:function(createElement,context){ //context参数提供临时上下文
-				//根据传入的数据，只能判断显示哪种组件
+				//根据传入的数据，判断显示哪种组件
 				function getComponent(){
 					var data = context.props.data //context.props.data相当于this.data
 					if(data.type === 'img') return ImgItem;

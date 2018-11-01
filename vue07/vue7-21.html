@@ -18,7 +18,7 @@
 	<script>
 		Vue.component('child-component',{
 			props:{
-				books:{ //如果是数组或对象，默认值必须是一个函数来返回
+				books:{ //如果是数组或对象，默认值必须是一个函数来返回。这里是数组bk
 					type:Array,
 					default:function(){
 						return [];

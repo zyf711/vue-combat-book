@@ -11,7 +11,7 @@ webpackBaseConfig.plugins = [];
 module.exports = merge(webpackBaseConfig,{
 	output:{
 		publicPath:'/dist/',
-		filename:'[name].[hash].js'
+		filename:'[name].[chunkhash].js'
 	},
 	plugins:[
 		// new ExtractTextPlugin({
@@ -19,7 +19,7 @@ module.exports = merge(webpackBaseConfig,{
 		// 	allChunks:true
 		// }),
 		new MiniCssExtractPlugin({
-			filename:'[name].[hash].css'
+			filename:'[name].[chunkhash].css'
 		}),
 		new webpack.DefinePlugin({
 			'process.env':{

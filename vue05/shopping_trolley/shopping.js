@@ -27,7 +27,7 @@ var app = new Vue({
 				var item = this.list[i]
 				total += item.price * item.count
 			}
-			return total.toString().replace(/\B(?=(\d{3})+$)/g,',')
+			return total.toString().replace(/\B(?=(\d{3})+$)/g,',') //每三位数逗号隔开
 		}
 	},
 	methods:{

@@ -7,10 +7,10 @@
 <body>
 	<!-- v-model绑定父级数据，v-bind动态绑定props的值，通过输入框输入内容，子组件接收到的props 也会实时响应更新模板 -->
 	<div id="app">
-		<input type="text" v-model="parentMessage">
 		<!-- v-model绑定父级data数据parentMessage -->
+		<input type="text" v-model="parentMessage">
 		<my-component :message="parentMessage"></my-component>
-		<!-- 父组件自定义message传自己data的parentMessage v-bind绑定message的值 -->
+		<!-- 父组件自定义message传自己data的parentMessage数据 v-bind绑定message的值 -->
 	</div>
 	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
 	<script>

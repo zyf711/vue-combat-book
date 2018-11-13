@@ -51,7 +51,10 @@ PS:强烈建议购买正版书阅读，另外对着屏幕总是比看书费眼�
 2018/11.01更新：     
 修改vue01-vue10部分文件代码            
 [新增vue-devtools工具](https://pan.baidu.com/s/1tSWJceedc27EnfET5IX_xg),如何安装有人写的文章很清楚了,[戳这里](https://segmentfault.com/a/1190000009682735)     
-新增[简单的在webpack4.23.1下对vue2.5.17的搭建](https://github.com/zyf711/webpack-quick)    
+[新增简单的在webpack4.23.1下对vue2.5.17的搭建](https://github.com/zyf711/webpack-quick)       
+
+2018/11.13更新：            
+[新增vue+vue-router+vuex做的移动端小答题页面](https://github.com/zyf711/vue2-answer)           
 
 
 

@@ -14,12 +14,12 @@
 			data:{
 				date:new Date()
 			},
-			mounted:function(){
+			mounted:function(){ //一般第一个业务逻辑在这里开始
 				this.timer = setInterval(() =>{
 					this.date = new Date()
 				},1000)
 			},
-			beforeDestroy:function(){ //实例销毁前调用
+			beforeDestroy:function(){ //实例销毁前调用。主要解绑使用addEventListener监听的事件等。
 				if(this.timer){
 					clearInterval(this.timer)
 				}

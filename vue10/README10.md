@@ -96,16 +96,19 @@ module.exports = config
 ```   
 
 在demo下新建一个index.html文件作为spa的入口。 npm run dev就会自动打开页面了。   
-**注意：按书中操作会提示找不到module webpack-cli/bin/config-yargs 要装下cli**  
-`npm install webpack-cli`
+**注意：按书中操作会提示找不到module webpack-cli/bin/config-yargs 要装下cli**          
 
-webpack世界里每个文件都是一个模块，不同的模块需要不同的加载器(Loaders)来处理。写css用到：  
+`npm install webpack-cli --save-dev`                             
+
+webpack世界里每个文件都是一个模块，不同的模块需要不同的加载器(Loaders)来处理。写css用到：          
+
 ```
 npm install css-loader --save-dev
 npm install style-loader --save-dev
 ```  
 
-安装完在webpack.config.js里配置：   
+安装完在webpack.config.js里配置：       
+
 ```
 module:{
 rules:[
@@ -120,14 +123,18 @@ rules:[
 }
 ```  
 
-在src文件夹下新建style.css，写内容。在main.js里导入：`import './style.css'`  
+在src文件夹下新建style.css，写内容。在main.js里导入：             
 
-样式都是通过js创建出来的。要使用插件把散落在各地的css提取出来，并生成一个main.css文件（都要在webpack.config.js里配置），最终在index.html里通过link形式加载。  
-`npm install extract-text-webpack-plugin@next --save-dev`  
+`import './style.css'`                          
 
-*书里的插件版本已经不支持webpack4，所以要用插件后边带个@next的版本。*  
+样式都是通过js创建出来的。要使用插件把散落在各地的css提取出来，并生成一个main.css文件（都要在webpack.config.js里配置），最终在index.html里通过link形式加载。      
 
-配置webpack.config.js：  
+`npm install extract-text-webpack-plugin@next --save-dev`                
+
+*书里的插件版本已经不支持webpack4，所以要用插件后边带个@next的版本。*            
+
+配置webpack.config.js：      
+
 ```
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
@@ -144,8 +151,12 @@ plugins:[
         allChunks: true
     })
 ]
-```   
-或者用另一个插件直接支持webpack4，实现：`npm install mini-css-extract-plugin --save-dev`  
+``` 
+
+或者用另一个插件直接支持webpack4，实现：           
+
+`npm install mini-css-extract-plugin --save-dev`             
+
 ```
 var MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
@@ -177,19 +188,21 @@ npm install --save-dev babel-preset-es2015
 npm install --save-dev babel-runtime
 ```
 
-*注意:vue-loader需要在webpack.config.js配置里写入vueloadpluin*  
-~~npm install --save-dev babel~~ 已换成npm install --save-dev babel-cli  
-~~npm install --save-dev babel-preset-es2015~~已换成npm install --save-dev babel-preset-env
+*注意:vue-loader需要在webpack.config.js配置里写入vueloadpluin*         
+~~npm install --save-dev babel~~ 已换成npm install --save-dev babel-cli            
+~~npm install --save-dev babel-preset-es2015~~已换成npm install --save-dev babel-preset-env              
 
-在demo目录下用编辑器新建一个名为.babelrc的文件（没有文件名）。写入babel的配置，webpack会依赖此配置文件来使用babel编译ES6:   
+在demo目录下用编辑器新建一个名为.babelrc的文件（没有文件名）。写入babel的配置，webpack会依赖此配置文件来使用babel编译ES6:        
+
 ```
 {
 	"presets":["es2015"], （这里要把es2015换成env）
 	"plugins":["transform-runtime"],
 	"comments":false
 }
-```   
-配置webpack.config.js来支持对.vue文件和es6的解析：   
+```      
+
+配置webpack.config.js来支持对.vue文件和es6的解析：            
 
 ```
 const { VueLoaderPlugin } = require('vue-loader'); 
@@ -214,13 +227,17 @@ const { VueLoaderPlugin } = require('vue-loader');
 // 	loader:'babel-loader',
 // 	exclude:/node_modules/
 // }
-```   
-安装url-loader和file-loader来支持图片字体等:   
+```       
+
+安装url-loader和file-loader来支持图片字体等:            
+
 ```
 npm install --save-dev url-loader 
 npm install --save-dev file-loader
-```   
-本章最后开发环境配置：  
+```       
+
+本章最后开发环境配置：        
+
 ```
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -299,12 +316,15 @@ const config = {
 };
 module.exports = config
 //ES6: export default config
-```   
-到生产环境时打包需要用到：   
+```       
+
+到生产环境时打包需要用到：      
+
 ```
 npm install --save-dev webpack-merge
 npm install --save-dev html-webpack-plugin 
-```  
+```       
+
 webpack-merge用于合并两个webpack文件，方便写生产环境的配置文件  
 html-webpack-plugin用来生成html文件，通过template选项来读取指定的模板index.ejs   
 
@@ -357,9 +377,11 @@ module.exports = merge(webpackBaseConfig,{
 		new VueLoaderPlugin() //vue-loader，15的版本需要再添加plugin的配置
 	]
 });
-```   
+```       
+
 index.ejs动态设置了静态资源的路径和文件名。   
-ejs是一个js模板库，用来从json数据中生成html字符串，常用于nodejs  
+ejs是一个js模板库，用来从json数据中生成html字符串，常用于nodejs        
+
 ```
 <!DOCTYPE html>
 <html lang="en">
@@ -373,12 +395,15 @@ ejs是一个js模板库，用来从json数据中生成html字符串，常用于n
     <script type="text/javascript" src="<%= htmlWebpackPlugin.files.js[0] %>"></script>
 </body>
 </html> 
-```   
+```        
+
 >小知识：项目需要重新安装模块的时候，复制好package.json后，npm install   就会安装dependencies字段内的所有依赖模块了。   
 
-node/npm查看安装过的模块或包。结果和文件夹下面的node_modules目录是对应的：
+node/npm查看安装过的模块或包。结果和文件夹下面的node_modules目录是对应的：           
+
 ```
 npm ls --depth 0
 npm ls -g --depth 0
-```   
+```         
+
 `npm list` 会显示和你已经安装模块的关联模块---这些没有在 package.json文件中被引用。你可以单独 `npm uninstall` 每一个模块或者全部移除它们： `npm prune`

@@ -10,11 +10,13 @@
 *注意：写vue的时候a标签里不要再有href了，不然会出现意想不到的问题。*   
 
 跨域问题：   
-使用基于nodejs的request库来做代理  
-`npm install request --save-dev`    
-
+使用基于nodejs的request库来做代理      
+            
+`npm install request --save-dev`            
+          
 request 是一个用来简化 HTTP 请求操作的模块   
-daily目录下新建proxy.js内容：   
+daily目录下新建proxy.js内容：       
+
 ```
 const http = require('http');
 const request = require('request');
@@ -71,11 +73,14 @@ const imgServer = http.createServer((req, res) => {
 imgServer.listen(imgPort,hostname,()=>{
   console.log(`图片代理运行在http://${hostname}:${imgPort}/`);
 })
-```   
-Axios 是一个基于 promise 的 HTTP 库，可以用在浏览器和 node.js 中。   
-`npm install axios --save`   
+```       
 
-daily\src\libs下新建util.js内容：   
+Axios 是一个基于 promise 的 HTTP 库，可以用在浏览器和 node.js 中。        
+
+`npm install axios --save`       
+
+daily\src\libs下新建util.js内容：       
+
 ```
 import axios from 'axios';
 // 基本配置
@@ -110,10 +115,12 @@ getThemes(){
 }
 ```
 
-使用concurrent 模块实现同时监听执行两条命令   
-`npm install concurrently --save-dev`   
+使用concurrent 模块实现同时监听执行两条命令        
 
-然后在package.json里面的 "script" 里面的 "start"写入同时执行语句   
+`npm install concurrently --save-dev`      
+
+然后在package.json里面的 "script" 里面的 "start"写入同时执行语句        
+
 ```
 "scripts": {
     "dev": "webpack-dev-server --mode development --open --config webpack.config.js",

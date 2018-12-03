@@ -18,19 +18,19 @@
 
 		var app = new Vue({
 			el:'#app',
-			components:{
-				comA:{template:'<div>组件A</div>'},
-				comB:{template:'<div>组件B</div>'},
-				comC:{template:'<div>组件C</div>'}
-			},
-			data:{
-				currentView:'comA'
-			},
-			methods:{
-				handleChangeView:function(com){
-					this.currentView = 'com' + com
-				}
+		components:{
+			comA:{template:'<div>组件A</div>'},
+			comB:{template:'<div>组件B</div>'},
+			comC:{template:'<div>组件C</div>'}
+		},
+		data:{
+			currentView:'comA'
+		},
+		methods:{
+			handleChangeView:function(com){
+				this.currentView = 'com' + com
 			}
+		}
 		})
 	</script>
 </body>

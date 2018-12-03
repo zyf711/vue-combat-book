@@ -10,16 +10,19 @@ SPA：前后端分离的基础上，加一层前端路由。
 
 如果要独立开发一个前端路由，需要考虑到页面的可插拔，页面的生命周期，内存管理等问题。   
 
-路由不同页面事实上就是动态加载不同的组件。vue-router  
-`npm install --save vue-router`   
+路由不同页面事实上就是动态加载不同的组件。vue-router            
 
-在main.js（已经改成src里的index.js)里使用Vue.use()加载插件：   
+`npm install --save vue-router`       
+
+在main.js（已经改成src里的index.js)里使用Vue.use()加载插件：       
+
 ```
 import VueRouter from 'vue-router';
 Vue.use(VueRouter);
 ```   
 
-index.js里完成路由的配置，新建数组来制定路由匹配列表，每个路由映射一个组件，如：  
+index.js里完成路由的配置，新建数组来制定路由匹配列表，每个路由映射一个组件，如：       
+
 ```
 const Routers = [
 	{
@@ -64,7 +67,8 @@ new Vue({
 
 >小知识：es6中，const用于声明常量，也就是声明后不能再修改。   
 
-每个页面对应一个组件，也就是对应一个.vue文件。index.js里继续配置：   
+每个页面对应一个组件，也就是对应一个.vue文件。index.js里继续配置：       
+
 ```
 const RouterConfig = {
 	mode:'history', //使用html5的History模式
@@ -72,14 +76,17 @@ const RouterConfig = {
 };
 
 const router = new VueRouter(RouterConfig);   
-```
-使用html5的History模式时，在生产环境服务端必须进行配置，将所有路由都指向同一html，或设置404页面为该html，否则刷新时页面会出404
-webpack-dev-server也要配置下来支持history路由，在package.json中修改dev命令。增加--history-api-fallback 所有路由都会指向index.html：  
-`"dev": "webpack-dev-server --host 192.168.10.122 --mode development --history-api-fallback --open --config webpack.config.js"`   
+```             
 
-之后要在根实例里添加router-view来挂载所有组件。   
+使用html5的History模式时，在生产环境服务端必须进行配置，将所有路由都指向同一html，或设置404页面为该html，否则刷新时页面会出404
+webpack-dev-server也要配置下来支持history路由，在package.json中修改dev命令。增加--history-api-fallback 所有路由都会指向index.html：       
+
+`"dev": "webpack-dev-server --host 192.168.10.122 --mode development --history-api-fallback --open --config webpack.config.js"`       
+
+之后要在根实例里添加router-view来挂载所有组件。      
 router-view会根据当前路由动态渲染不同的页面组件，公共组件比如顶部导航，底部版权信息等，可以直接和router-view同级   
-这个例子就是在app.vue里添加：   
+这个例子就是在app.vue里添加：      
+
 ```
 <template>
 	<div>
@@ -88,16 +95,18 @@ router-view会根据当前路由动态渲染不同的页面组件，公共组件
 		<div>底部</div>
 	</div>
 </template>
-```   
-跳转：vue-router有两种跳转页面方法，第一种使用内置的router-link组件，他会被渲染成一个a标签。在html5的history模式下会拦截点击，避免浏览器重新加载页面。另一种使用router实例方法。this.$router.push('/user/123')  
+```         
+
+跳转：vue-router有两种跳转页面方法，第一种使用内置的router-link组件，他会被渲染成一个a标签。在html5的history模式下会拦截点击，避免浏览器重新加载页面。另一种使用router实例方法。this.$router.push('/user/123')         
 
 ```
 router.beforeEach((to,from,next) => { //参数：即将要进入的目标的路由对象，当前导航即将要离开的路由对象，调用该方法后才能进入下一个钩子。
 	window.document.title = to.meta.title;
 	next();  //调用该方法后，才能进入下一个钩子。
 });
-```   
-*注意:因mini-css-extract-plugin将多个css chunk合并成一个css文件出问题，webpack.config.js中用回了extract-text-webpack-plugin*   
+```      
+
+*注意:mini-css-extract-plugin不能将多个css chunk合并成一个css文件，在这里webpack.config.js中用回了extract-text-webpack-plugin*              
 
 ## Vuex   
 
@@ -125,10 +134,12 @@ new Vue({
         return h(App);
     }
 })
-```   
+```    
+
 仓库store包含了应用的数据和操作过程。vuex里的数据都是响应式的。任何组件使用同一store的数据时，只要store的数据变化，对应组件会立即更新。   
-new Vuex.Store有五个参数：state mutations actions getters modules  
-完整vuex代码：   
+new Vuex.Store有五个参数：state mutations actions getters modules       
+完整vuex代码：      
+
 ```
 import Vue from 'vue'; 
 import VueRouter from 'vue-router';
@@ -230,8 +241,10 @@ new Vue({
         return h(App);
     }
 });
-```   
-moduleA.js内容：   
+```            
+
+moduleA.js内容：            
+
 ```
 const state = {
   useName: "sam", // 模块内部的state是局部的，所以任何组件通过this.$store.state.moduleA.useName读取
@@ -249,7 +262,8 @@ export default {
 ```   
 
 ## vue-bus   
-封装一个bus插件，可以在所有组件间随意使用，而不需要每个组件都导入bus:   
+封装一个bus插件，可以在所有组件间随意使用，而不需要每个组件都导入bus:        
+
 ```
 const install = function(Vue){
 	const Bus = new Vue({
@@ -269,16 +283,23 @@ const install = function(Vue){
 };
 
 export default install;
-```  
-在indxe.js中使用插件：   
+```      
+
+在indxe.js中使用插件：       
+
 ```
 import VueBus from './vue-bus';
 Vue.use(VueBus);
-```   
-之后比如在index.vue中使用组件并监听来自Counter.vue的自定义事件，部分代码：  
-Counter.vue里 `this.$bus.emit('add',num);`   
+```      
 
-index.vue里因为是监听counter，所以要引入：   
+之后比如在index.vue中使用组件并监听来自Counter.vue的自定义事件，部分代码：    
+
+Counter.vue里：             
+             
+ `this.$bus.emit('add',num);`           
+
+index.vue里因为是监听counter，所以要引入：          
+
 ```
 import Counter from './Counter.vue'  
 
@@ -294,7 +315,8 @@ created(){
 beforeDestroy(){
 	this.$bus.off('add',this.handleAddRandom);
 }
-```  
-使用vue-bus两点需要注意：   
-$bus.on应该在created钩子内使用，如果在mounted使用，他可能接收不到其他组件来自created钩子内发出的事件。   
-使用了$bus.on，在beforeDestroy钩子里应该再使用$bus.off解除。因为组件销毁后，就没必要把监听的句柄存在vue-bus里了。
+```     
+
+使用vue-bus两点需要注意：          
+$bus.on应该在created钩子内使用，如果在mounted使用，他可能接收不到其他组件来自created钩子内发出的事件。         
+使用了$bus.on，在beforeDestroy钩子里应该再使用$bus.off解除。因为组件销毁后，就没必要把监听的句柄存在vue-bus里了。            

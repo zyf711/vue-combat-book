@@ -45,7 +45,8 @@
 
 ## 项目文件百度网盘   
 
-[项目代码 + 《Vue.js实战》电子版zip](https://pan.baidu.com/s/1tSWJceedc27EnfET5IX_xg)   
+~~[项目代码 + 《Vue.js实战》电子版zip](https://pan.baidu.com/s/1tSWJceedc27EnfET5IX_xg)~~         
+书籍电子版已删除，[项目代码](https://pan.baidu.com/s/1tSWJceedc27EnfET5IX_xg)                                           
 PS:强烈建议购买正版书阅读，另外对着屏幕总是比看书费眼睛吧。   
 
 2018/11.01更新：     
